@@ -13,10 +13,6 @@ import org.hibernate.annotations.UuidGenerator;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 
-// La clase representa una entidad en la base de datos
-
-
-//ANOTACIONES
 @Entity
 @Getter
 @Setter
@@ -26,13 +22,11 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 @Table(name = "contacts")
 public class Contact {
 
-    // Identificador único de la entidad
     @Id
     @UuidGenerator
     @Column(name = "id", unique = true, updatable = false)
     private String id;
 
-    // Atributos que representan las propiedades de un contacto
     private String name;
     private String email;
     private String title;
@@ -40,4 +34,18 @@ public class Contact {
     private String address;
     private String status;
     private String photoUrl;
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", title='" + title + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", status='" + status + '\'' +
+                ", photoUrl='" + photoUrl + '\'' +
+                '}';
+    }
 }
