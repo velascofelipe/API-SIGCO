@@ -1,11 +1,8 @@
 package io.sigco.contactapi.resource;
 
 import io.sigco.contactapi.domain.Contact;
-import io.sigco.contactapi.domain.LoginRequest;
-import io.sigco.contactapi.service.AuthService;
 import io.sigco.contactapi.service.ContactService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -28,7 +25,7 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 @RequiredArgsConstructor
 public class ContactResource {
     private final ContactService contactService;
-    private final AuthService authService;
+
 
 
     @PostMapping
@@ -93,24 +90,5 @@ public class ContactResource {
         }
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
-        try {
-            // Validar las credenciales (usando tu lógica existente)
-            String username = loginRequest.getUsername();
-            String password = loginRequest.getPassword();
 
-            // Aquí deberías validar las credenciales con tu lógica existente
-            // Puedes usar un servicio dedicado de autenticación si es más complejo
-
-            // Si las credenciales son válidas, genera un token JWT usando la instancia de AuthService
-            String token = authService.generateToken(username);
-
-            // Devuelve el token como respuesta
-            return ResponseEntity.ok().body(token);
-        } catch (Exception e) {
-            // Maneja cualquier error durante el proceso de inicio de sesión
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error durante el inicio de sesión: " + e.getMessage());
-        }
-    }
 }

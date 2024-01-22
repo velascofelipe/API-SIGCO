@@ -13,7 +13,10 @@ import org.hibernate.annotations.UuidGenerator;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 
+// La clase representa una entidad en la base de datos
 
+
+//ANOTACIONES
 @Entity
 @Getter
 @Setter
@@ -22,10 +25,14 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_DEFAULT;
 @JsonInclude(NON_DEFAULT)
 @Table(name = "contacts")
 public class Contact {
+
+    // Identificador único de la entidad
     @Id
     @UuidGenerator
     @Column(name = "id", unique = true, updatable = false)
     private String id;
+
+    // Atributos que representan las propiedades de un contacto
     private String name;
     private String email;
     private String title;
