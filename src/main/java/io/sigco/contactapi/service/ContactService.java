@@ -54,11 +54,14 @@ public class ContactService {
     // Método para obtener un contacto por su ID
     public Contact getContact(String id) {
         return contactRepo.findById(id).orElseThrow(() -> new RuntimeException("Contact not found"));
+
     }
 
     // Método para crear un nuevo contacto
     public Contact createContact(Contact contact) {
+        log.info("Contacto creado exitosamente");
         return contactRepo.save(contact);
+
     }
 
     // Método para eliminar un contacto por su ID
@@ -70,7 +73,7 @@ public class ContactService {
 
     // Método para cargar una foto y actualizar la URL de la foto en un contacto
     public String uploadPhoto(String id, MultipartFile file) {
-        log.info("Saving picture for user ID: {}", id);
+        log.info("Guardando imagen para el usuario ID: {}", id);
         Contact contact = getContact(id);
         String photoUrl = photoFunction.apply(id, file);
         contact.setPhotoUrl(photoUrl);

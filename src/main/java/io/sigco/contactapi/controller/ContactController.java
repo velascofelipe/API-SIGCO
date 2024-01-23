@@ -1,4 +1,4 @@
-package io.sigco.contactapi.resource;
+package io.sigco.contactapi.controller;
 
 import io.sigco.contactapi.domain.Contact;
 import io.sigco.contactapi.service.ContactService;
@@ -24,7 +24,7 @@ import static org.springframework.http.MediaType.IMAGE_PNG_VALUE;
 @RestController
 @RequestMapping("/contacts")
 @RequiredArgsConstructor
-public class ContactResource {
+public class ContactController {
 
     // Inyección de dependencia del servicio de contactos
     private final ContactService contactService;
